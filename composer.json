@@ -1,0 +1,23 @@
+
+{
+  "name": "traxo/ratelimit-php-client",
+  "description": "A PHP client for lyft/ratelimit",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chris Stevens",
+      "email": "info@traxo.com"
+    }
+  ],
+  "require": {
+    "grpc/grpc": "^v1.15.0",
+    "google/protobuf": "^v3.6.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Traxo\\RateLimit\\": "src",
+      "Pb\\Lyft\\Ratelimit\\": "src/Pb/Lyft/Ratelimit",
+      "GPBMetadata\\Ratelimit\\": "src/GPBMetadata/Ratelimit"
+    }
+  }
+}
