@@ -33,6 +33,12 @@ descriptors:
       requests_per_unit: 600
 ```
 
+Ensure that the grpc php extension is installed and enabled per the
+[gRPC docs](https://grpc.io/docs/quickstart/php.html#install-the-grpc-php-extension):
+```
+pecl install grpc
+```
+
 Install the library with composer:
 ```
 composer require traxo/ratelimit-php-client
@@ -91,7 +97,7 @@ $req->setDescriptors([
 Call the ratelimit network service and wait for the response:
 ```
 try {
-    list($result, $status) = $client->ShouldRateLimit($req)->wait();
+    list($response, $status) = $client->ShouldRateLimit($req)->wait();
 } catch (Exception $e) {
     var_dump($e->getMessage());
     exit;
