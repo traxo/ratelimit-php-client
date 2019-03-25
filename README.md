@@ -169,23 +169,35 @@ or
 sudo yum install --enablerepo=epel,remi,remi-php73 php-pecl-grpc
 ```
 
-2. Add the module file `/etc/php.d/30-grpc.ini`:
+2. Add the module file `/etc/php.d/40-grpc.ini` if not already installed:
 ```
-; Enable grpc extension module
+; Enable "General RPC framework" extension module
 extension = grpc.so
 ```
 
 3. Install the Protobuf runtime library:
 ```
 sudo pecl install protobuf
+or
+sudo yum install --enablerepo=epel,remi,remi-php73 php-pecl-protobuf
 ```
 
-4) Install the protobuf compiler:
+4. Add the module file `/etc/php.d/40-protobuf.ini` if not already installed:
 ```
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip
-unzip protoc-3.6.1-linux-x86_64.zip
+; Enable protobuf extension module
+extension = protobuf.so
+```
+
+5. Install the protobuf compiler:
+```
+cd /tmp
+sudo yum install -y libatomic
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-x86_64.zip
+unzip protoc-3.7.0-linux-x86_64.zip
 sudo cp bin/protoc /usr/local/bin/
 sudo cp -Rf include/google /usr/local/include/
+sudo chmod a+rx /usr/local/bin/protoc
+cd -
 ```
 
 
@@ -198,11 +210,14 @@ project.
 
 2. Checkout the gRPC repository next to this one:
 ```
-git clone -b v1.18.0 https://github.com/grpc/grpc
+git clone -b v1.19.0 https://github.com/grpc/grpc
 ```
 
 3. Run the `proto-gen.sh` script from the root of this client repository. The script uses relative
-paths to locate the `grpc` repository on the local filesystem.
+paths to locate the `grpc` repository on the local filesystem:
+```
+sh proto-gen.sh
+```
 
 
 ### Limitations / Future Work
