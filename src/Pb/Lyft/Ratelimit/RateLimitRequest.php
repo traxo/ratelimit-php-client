@@ -7,6 +7,7 @@ namespace Pb\Lyft\Ratelimit;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\Internal\GPBWrapperUtils;
 
 /**
  * Main message for a rate limit request. The rate limit service is designed to be fully generic

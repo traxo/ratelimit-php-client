@@ -7,6 +7,7 @@ namespace Pb\Lyft\Ratelimit;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\Internal\GPBWrapperUtils;
 
 /**
  * Defines an actual rate limit in terms of requests per unit of time and the unit itself.

@@ -7,6 +7,7 @@ namespace Pb\Lyft\Ratelimit\RateLimitDescriptor;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+use Google\Protobuf\Internal\GPBWrapperUtils;
 
 /**
  * Generated from protobuf message <code>pb.lyft.ratelimit.RateLimitDescriptor.Entry</code>

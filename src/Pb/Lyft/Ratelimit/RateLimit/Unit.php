@@ -4,6 +4,8 @@
 
 namespace Pb\Lyft\Ratelimit\RateLimit;
 
+use UnexpectedValueException;
+
 /**
  * Protobuf type <code>pb.lyft.ratelimit.RateLimit.Unit</code>
  */
@@ -29,6 +31,34 @@ class Unit
      * Generated from protobuf enum <code>DAY = 4;</code>
      */
     const DAY = 4;
+
+    private static $valueToName = [
+        self::UNKNOWN => 'UNKNOWN',
+        self::SECOND => 'SECOND',
+        self::MINUTE => 'MINUTE',
+        self::HOUR => 'HOUR',
+        self::DAY => 'DAY',
+    ];
+
+    public static function name($value)
+    {
+        if (!isset(self::$valueToName[$value])) {
+            throw new UnexpectedValueException(sprintf(
+                    'Enum %s has no name defined for value %s', __CLASS__, $value));
+        }
+        return self::$valueToName[$value];
+    }
+
+
+    public static function value($name)
+    {
+        $const = __CLASS__ . '::' . strtoupper($name);
+        if (!defined($const)) {
+            throw new UnexpectedValueException(sprintf(
+                    'Enum %s has no value defined for name %s', __CLASS__, $name));
+        }
+        return constant($const);
+    }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.

@@ -4,6 +4,8 @@
 
 namespace Pb\Lyft\Ratelimit\RateLimitResponse;
 
+use UnexpectedValueException;
+
 /**
  * Protobuf type <code>pb.lyft.ratelimit.RateLimitResponse.Code</code>
  */
@@ -21,6 +23,32 @@ class Code
      * Generated from protobuf enum <code>OVER_LIMIT = 2;</code>
      */
     const OVER_LIMIT = 2;
+
+    private static $valueToName = [
+        self::UNKNOWN => 'UNKNOWN',
+        self::OK => 'OK',
+        self::OVER_LIMIT => 'OVER_LIMIT',
+    ];
+
+    public static function name($value)
+    {
+        if (!isset(self::$valueToName[$value])) {
+            throw new UnexpectedValueException(sprintf(
+                    'Enum %s has no name defined for value %s', __CLASS__, $value));
+        }
+        return self::$valueToName[$value];
+    }
+
+
+    public static function value($name)
+    {
+        $const = __CLASS__ . '::' . strtoupper($name);
+        if (!defined($const)) {
+            throw new UnexpectedValueException(sprintf(
+                    'Enum %s has no value defined for name %s', __CLASS__, $name));
+        }
+        return constant($const);
+    }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.
